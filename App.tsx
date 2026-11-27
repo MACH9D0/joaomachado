@@ -5,6 +5,7 @@ import { SkillCard } from './components/SkillCard';
 import { ProjectCard } from './components/ProjectCard';
 import { ProjectModal } from './components/ProjectModal';
 import { NetworkBackground } from './components/NetworkBackground';
+import { Services } from './components/Services';
 import { SkillCategory, Project } from './types';
 import { Linkedin, Mail, ShieldAlert, Copy, Check, Briefcase, GraduationCap } from 'lucide-react';
 
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   
   const contactEmail = "machadojoao2001@gmail.com";
+  const zaaskUrl = "https://www.zaask.pt/user/joaomachadoinformaticasantotirso";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactEmail);
@@ -55,16 +57,16 @@ const App: React.FC = () => {
   const projects: Project[] = [
     {
       title: "VLAN Segmentation Lab",
-      description: "Implementação de segmentação de rede usando VLANs para separar tráfego de gestão, usuários e IoT, aumentando a segurança interna.",
-      longDescription: "Neste laboratório extensivo, configurei switches Cisco Catalyst para dividir a infraestrutura de rede em múltiplas VLANs dedicadas (Gestão, Colaboradores, IoT e Convidados). Configurei troncos 802.1Q e implementei roteamento inter-VLAN com a técnica 'Router-on-a-Stick'. Adicionalmente, apliquei Access Control Lists (ACLs) rigorosas para garantir que dispositivos na VLAN IoT não pudessem acessar a rede de Gestão, reduzindo significativamente a superfície de ataque lateral.",
+      description: "Implementação de segmentação de rede usando VLANs para separar tráfego de gestão, utilizadores e IoT, aumentando a segurança interna.",
+      longDescription: "Neste laboratório extensivo, configurei switches Cisco Catalyst para dividir a infraestrutura de rede em múltiplas VLANs dedicadas (Gestão, Colaboradores, IoT e Convidados). Configurei troncos 802.1Q e implementei encaminhamento inter-VLAN com a técnica 'Router-on-a-Stick'. Adicionalmente, apliquei Access Control Lists (ACLs) rigorosas para garantir que dispositivos na VLAN IoT não pudessem aceder à rede de Gestão, reduzindo significativamente a superfície de ataque lateral.",
       tags: ["Cisco", "Switching", "Security", "ACLs", "VLAN"],
       status: "Completed",
       links: []
     },
     {
       title: "Linux Server Hardening",
-      description: "Configuração de um servidor Ubuntu seguindo benchmarks CIS. Configuração de UFW, SSH Keys e Fail2Ban para mitigar ataques de força bruta.",
-      longDescription: "Seguindo os rigorosos benchmarks CIS para Ubuntu Server, realizei o hardening completo de uma instância VPS crítica. As ações incluíram: configuração de firewall UFW com política 'deny by default', desabilitação total de login root via SSH, implementação exclusiva de autenticação baseada em chaves Ed25519, e configuração do Fail2Ban para banir IPs automaticamente após tentativas falhas de login. Também realizei auditoria de permissões de arquivos críticos e configurei atualizações de segurança automáticas.",
+      description: "Configuração de um servidor Ubuntu segundo os benchmarks CIS. Configuração de UFW, SSH Keys e Fail2Ban para mitigar ataques de força bruta.",
+      longDescription: "Segundo os rigorosos benchmarks CIS para Ubuntu Server, realizei o hardening completo de uma instância VPS crítica. As ações incluíram: configuração de firewall UFW com política 'deny by default', desativação total do login root via SSH, implementação exclusiva de autenticação baseada em chaves Ed25519, e configuração do Fail2Ban para banir IPs automaticamente após tentativas falhas de login. Também realizei auditoria de permissões de ficheiros críticos e configurei atualizações de segurança automáticas.",
       tags: ["Linux", "Hardening", "SSH", "UFW", "Fail2Ban"],
       status: "In Progress",
        links: []
@@ -72,7 +74,7 @@ const App: React.FC = () => {
     {
       title: "Wireshark Traffic Analysis",
       description: "Análise de capturas de pacotes para identificar anomalias de rede e assinaturas de malware simuladas em ambiente controlado.",
-      longDescription: "Utilizei o Wireshark para dissecar arquivos PCAP gerados durante uma simulação de ataque Red Team vs Blue Team. Identifiquei com sucesso padrões de varredura de portas (SYN scans), tentativas de exfiltração de dados via DNS tunneling e credenciais transmitidas em texto claro (HTTP/Telnet). O projeto culminou em um relatório forense detalhado documentando os vetores de ataque, timestamps precisos e recomendações de mitigação para firewall.",
+      longDescription: "Utilizei o Wireshark para analisar ficheiros PCAP gerados durante uma simulação de ataque Red Team vs Blue Team. Identifiquei com sucesso padrões de varredura de portas (SYN scans), tentativas de exfiltração de dados via DNS tunneling e credenciais transmitidas em texto claro (HTTP/Telnet). O projeto culminou num relatório forense detalhado documentando os vetores de ataque, timestamps precisos e recomendações de mitigação para firewall.",
       tags: ["Forensics", "Networking", "Analysis", "Wireshark", "PCAP"],
       status: "Completed",
       links: []
@@ -98,22 +100,28 @@ const App: React.FC = () => {
           {/* Hero Section */}
           <Hero />
 
+          {/* Services Section */}
+          <Services contactEmail={contactEmail} zaaskUrl={zaaskUrl} />
+
           {/* About Section */}
           <section id="sobre" className="py-20 md:py-32 border-b border-cyber-dim/10 bg-cyber-bg/80 backdrop-blur-md rounded-xl my-8 p-8 border border-cyber-dim/20 shadow-lg">
             <div className="flex flex-col md:flex-row gap-12 items-start">
               <div className="md:w-1/2">
                 <h2 className="section-title text-3xl font-mono font-bold text-white mb-8 flex items-center">
-                  <span className="text-cyber-neon mr-2">01.</span> Sobre Mim
+                  <span className="text-cyber-neon mr-2">02.</span> Sobre Mim
                 </h2>
                 <div className="space-y-4 text-lg">
                   <p>
-                    Atualmente, desempenho funções como <span className="text-cyber-neon">Técnico de Sistemas e Tecnologias de Informação na ULSMAVE</span>, onde resolvo diariamente problemas complexos de hardware e software.
+                    Atualmente, sou <span className="text-cyber-neon">Administrador de Sistemas e Técnico de Suporte de TI</span> num grupo empresarial, depois de vários anos a resolver diariamente problemas de hardware, software e redes em ambiente hospitalar e empresarial.
                   </p>
                   <p>
                     No entanto, a minha verdadeira paixão reside na infraestrutura que conecta o mundo. Sou estudante de <span className="text-cyber-neon">Redes e Segurança Informática no IPCA</span>, onde aprofundo os meus conhecimentos em cibersegurança ofensiva e defensiva.
                   </p>
                   <p>
                     O meu objetivo é compreender não apenas como construir redes robustas, mas também como defendê-las contra ameaças modernas. Passo o meu tempo livre a configurar laboratórios, a estudar Linux e a explorar novas ferramentas de segurança.
+                  </p>
+                  <p>
+                    Em paralelo, presto <span className="text-cyber-neon">serviços de informática a particulares e pequenos negócios</span> na zona de Santo Tirso, com o mesmo cuidado que uso nas empresas.
                   </p>
                 </div>
               </div>
@@ -143,7 +151,7 @@ const App: React.FC = () => {
           {/* Experience & Education Section */}
           <section id="experiencia" className="py-20 md:py-32">
             <h2 className="text-3xl font-mono font-bold text-white mb-12 flex items-center w-full">
-              <span className="text-cyber-neon mr-2">02.</span> Experiência & Educação
+              <span className="text-cyber-neon mr-2">03.</span> Experiência & Educação
               <span className="ml-4 h-px bg-cyber-dim/30 flex-grow max-w-xs"></span>
             </h2>
             
@@ -156,16 +164,34 @@ const App: React.FC = () => {
                 </h3>
                 <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-cyber-dim/50 before:to-transparent">
                   
-                  {/* ULSMAVE - Presente */}
+                  {/* Função atual */}
                   <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyber-neon bg-cyber-dark text-cyber-neon shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_10px_rgba(102,252,241,0.2)] z-10">
                       <Briefcase className="w-4 h-4" />
                     </div>
                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cyber-dark/80 backdrop-blur p-6 rounded-lg border border-cyber-dim/20 hover:border-cyber-neon/50 transition-colors">
                       <div className="flex flex-col mb-4">
+                        <h4 className="font-bold text-lg text-white">Administrador de Sistemas / Técnico de Suporte de TI</h4>
+                        <span className="text-cyber-neon font-mono text-sm">Grupo empresarial</span>
+                        <span className="text-cyber-dim text-xs mt-1">Novembro 2026 – Presente</span>
+                      </div>
+                      <ul className="text-sm text-cyber-text space-y-2">
+                        <li className="flex items-start"><span className="text-cyber-neon mr-2">▸</span><span>Administração de sistemas e infraestrutura de TI do grupo.</span></li>
+                        <li className="flex items-start"><span className="text-cyber-neon mr-2">▸</span><span>Suporte técnico a utilizadores, presencial e remoto.</span></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Saúde - setor público */}
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyber-dim bg-cyber-dark text-cyber-dim shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                      <Briefcase className="w-4 h-4" />
+                    </div>
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cyber-dark/80 backdrop-blur p-6 rounded-lg border border-cyber-dim/20 hover:border-cyber-dim/50 transition-colors">
+                      <div className="flex flex-col mb-4">
                         <h4 className="font-bold text-lg text-white">Técnico de Sistemas e Tecnologias de Informação</h4>
-                        <span className="text-cyber-neon font-mono text-sm">ULSMAVE</span>
-                        <span className="text-cyber-dim text-xs mt-1">Junho 2025 – Presente | Santo Tirso, Portugal</span>
+                        <span className="text-cyber-neon font-mono text-sm">Unidade de saúde (setor público)</span>
+                        <span className="text-cyber-dim text-xs mt-1">Junho 2025 – 2026 | Santo Tirso, Portugal</span>
                       </div>
                       <ul className="text-sm text-cyber-text space-y-2">
                         <li className="flex items-start"><span className="text-cyber-neon mr-2">▸</span><span>Instalação, configuração e manutenção de hardware e software em ambiente hospitalar, incluindo servidores, workstations, dispositivos de comunicação e periféricos.</span></li>
@@ -181,7 +207,7 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* IGINT - SPMS / ULSMAVE */}
+                  {/* Suporte local - saúde */}
                   <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyber-dim bg-cyber-dark text-cyber-dim shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                       <Briefcase className="w-4 h-4" />
@@ -189,7 +215,7 @@ const App: React.FC = () => {
                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cyber-dark/80 backdrop-blur p-6 rounded-lg border border-cyber-dim/20 hover:border-cyber-dim/50 transition-colors">
                       <div className="flex flex-col mb-4">
                         <h4 className="font-bold text-lg text-white">Técnico de Suporte Local</h4>
-                        <span className="text-cyber-neon font-mono text-sm">IGINT – SPMS / ULSMAVE</span>
+                        <span className="text-cyber-neon font-mono text-sm">Empresa de serviços de TI (setor da saúde)</span>
                         <span className="text-cyber-dim text-xs mt-1">Julho 2024 – Junho 2025 | Santo Tirso, Portugal</span>
                       </div>
                       <ul className="text-sm text-cyber-text space-y-2">
@@ -203,7 +229,7 @@ const App: React.FC = () => {
                     </div>
                   </div>
                   
-                  {/* VB Informática */}
+                  {/* Loja de informática */}
                   <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyber-dim bg-cyber-dark text-cyber-dim shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                       <Briefcase className="w-4 h-4" />
@@ -211,7 +237,7 @@ const App: React.FC = () => {
                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cyber-dark/80 backdrop-blur p-6 rounded-lg border border-cyber-dim/20 hover:border-cyber-dim/50 transition-colors">
                       <div className="flex flex-col mb-4">
                         <h4 className="font-bold text-lg text-white">Técnico de Informática (Estágio)</h4>
-                        <span className="text-cyber-neon font-mono text-sm">VB Informática</span>
+                        <span className="text-cyber-neon font-mono text-sm">Loja e serviços de informática</span>
                         <span className="text-cyber-dim text-xs mt-1">Setembro 2020 – Agosto 2021 | Santo Tirso, Portugal</span>
                       </div>
                       <ul className="text-sm text-cyber-text space-y-2">
@@ -258,7 +284,7 @@ const App: React.FC = () => {
           {/* Skills Section */}
           <section id="skills" className="py-20 md:py-32">
              <h2 className="text-3xl font-mono font-bold text-white mb-12 flex items-center w-full">
-              <span className="text-cyber-neon mr-2">03.</span> Competências Técnicas
+              <span className="text-cyber-neon mr-2">04.</span> Competências Técnicas
               <span className="ml-4 h-px bg-cyber-dim/30 flex-grow max-w-xs"></span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -271,7 +297,7 @@ const App: React.FC = () => {
           {/* Lab/Projects Section */}
           <section id="lab" className="py-20 md:py-32">
             <h2 className="text-3xl font-mono font-bold text-white mb-12 flex items-center w-full">
-              <span className="text-cyber-neon mr-2">04.</span> Home Lab
+              <span className="text-cyber-neon mr-2">05.</span> Home Lab
               <span className="ml-4 h-px bg-cyber-dim/30 flex-grow max-w-xs"></span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -287,15 +313,15 @@ const App: React.FC = () => {
 
           {/* Contact Section */}
           <section id="contacto" className="py-20 md:py-32 text-center max-w-2xl mx-auto bg-cyber-dark/60 backdrop-blur-md p-8 rounded-xl border border-cyber-dim/20 my-8 shadow-[0_0_30px_rgba(69,162,158,0.1)]">
-            <h2 className="text-cyber-neon font-mono mb-4 text-lg">05. O que se segue?</h2>
+            <h2 className="text-cyber-neon font-mono mb-4 text-lg">06. O que se segue?</h2>
             <h3 className="text-4xl font-bold text-white mb-6">Entre em Contacto</h3>
             <p className="text-cyber-text mb-10 text-lg">
-              Estou sempre aberto a novas oportunidades na área de segurança e redes, ou apenas para trocar ideias sobre tecnologia. A minha caixa de entrada está sempre aberta.
+              Precisa de ajuda com o computador, a rede ou o Microsoft 365 da sua empresa? Envie-me um e-mail com uma breve descrição e respondo com um orçamento sem compromisso. Também gosto de trocar ideias sobre redes e segurança.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
-                href={`mailto:${contactEmail}?subject=Contacto via Portfolio`}
+                href={`mailto:${contactEmail}?subject=Contacto via site`}
                 className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 border border-cyber-neon text-cyber-bg bg-cyber-neon font-mono font-bold transition-all duration-300 rounded hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(102,252,241,0.6)]"
               >
                 <Mail className="mr-2 w-5 h-5" />

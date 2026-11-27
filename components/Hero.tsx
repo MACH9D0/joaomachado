@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
-  const roles = ["Técnico de Sistemas e Tecnologias de Informação", "Estudante de Redes e Segurança", "Network Enthusiast"];
+  const roles = ["Administrador de Sistemas", "Serviços de Informática em Santo Tirso", "Estudante de Redes e Segurança"];
   const [text, setText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -70,7 +70,15 @@ export const Hero: React.FC = () => {
           </span>
         </div>
 
-        <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <div className="animate-fade-in flex flex-col sm:flex-row gap-4 items-center sm:items-start" style={{ animationDelay: '0.3s' }}>
+          <a
+            href="#servicos"
+            onClick={(e) => handleSmoothScroll(e, "#servicos")}
+            className="inline-flex items-center px-8 py-3 border border-cyber-neon bg-cyber-neon text-cyber-bg font-mono text-sm font-bold transition-all duration-300 rounded group hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(102,252,241,0.5)]"
+          >
+            Serviços e preços
+            <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
           <a 
             href="#lab"
             onClick={(e) => handleSmoothScroll(e, "#lab")}
