@@ -7,13 +7,15 @@ import { ProjectModal } from './components/ProjectModal';
 import { NetworkBackground } from './components/NetworkBackground';
 import { Services } from './components/Services';
 import { SkillCategory, Project } from './types';
-import { Linkedin, Mail, ShieldAlert, Copy, Check, Briefcase, GraduationCap } from 'lucide-react';
+import { Linkedin, Mail, ShieldAlert, Copy, Check, Briefcase, GraduationCap, Phone, MessageCircle } from 'lucide-react';
 
 const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [emailCopied, setEmailCopied] = useState(false);
   
   const contactEmail = "machadojoao2001@gmail.com";
+  const phone = "351938005191";
+  const phoneDisplay = "938 005 191";
   const zaaskUrl = "https://www.zaask.pt/user/joaomachadoinformaticasantotirso";
 
   const handleCopyEmail = () => {
@@ -101,7 +103,7 @@ const App: React.FC = () => {
           <Hero />
 
           {/* Services Section */}
-          <Services contactEmail={contactEmail} zaaskUrl={zaaskUrl} />
+          <Services contactEmail={contactEmail} zaaskUrl={zaaskUrl} phone={phone} phoneDisplay={phoneDisplay} />
 
           {/* About Section */}
           <section id="sobre" className="py-20 md:py-32 border-b border-cyber-dim/10 bg-cyber-bg/80 backdrop-blur-md rounded-xl my-8 p-8 border border-cyber-dim/20 shadow-lg">
@@ -316,9 +318,28 @@ const App: React.FC = () => {
             <h2 className="text-cyber-neon font-mono mb-4 text-lg">06. O que se segue?</h2>
             <h3 className="text-4xl font-bold text-white mb-6">Entre em Contacto</h3>
             <p className="text-cyber-text mb-10 text-lg">
-              Precisa de ajuda com o computador, a rede ou o Microsoft 365 da sua empresa? Envie-me um e-mail com uma breve descrição e respondo com um orçamento sem compromisso. Também gosto de trocar ideias sobre redes e segurança.
+              Precisa de ajuda com o computador, a rede ou o Microsoft 365 da sua empresa? Ligue, mande mensagem pelo WhatsApp ou envie-me um e-mail com uma breve descrição, e respondo com um orçamento sem compromisso. Também gosto de trocar ideias sobre redes e segurança.
             </p>
             
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+              <a
+                href={`https://wa.me/${phone}`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 border border-cyber-neon text-cyber-bg bg-cyber-neon font-mono font-bold transition-all duration-300 rounded hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(102,252,241,0.6)]"
+              >
+                <MessageCircle className="mr-2 w-5 h-5" />
+                WhatsApp
+              </a>
+              <a
+                href={`tel:+${phone}`}
+                className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 border border-cyber-neon text-cyber-neon font-mono font-bold transition-all duration-300 rounded hover:bg-cyber-neon/10 hover:-translate-y-1"
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                {phoneDisplay}
+              </a>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
                 href={`mailto:${contactEmail}?subject=Contacto via site`}

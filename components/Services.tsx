@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   HardDrive, ShieldCheck, Wifi, Monitor, CloudUpload, Headphones, Building2,
-  Mail, BadgeCheck, MapPin, ExternalLink
+  Mail, BadgeCheck, MapPin, ExternalLink, Phone, MessageCircle
 } from 'lucide-react';
 
 interface Service {
@@ -15,6 +15,8 @@ interface Service {
 interface ServicesProps {
   contactEmail: string;
   zaaskUrl: string;
+  phone: string;
+  phoneDisplay: string;
 }
 
 const iconProps = { className: 'w-6 h-6 text-cyber-neon' };
@@ -70,7 +72,7 @@ const guarantees = [
   { icon: <MapPin className="w-5 h-5 text-cyber-neon" />, text: 'Ao domicílio em Santo Tirso e arredores' },
 ];
 
-export const Services: React.FC<ServicesProps> = ({ contactEmail, zaaskUrl }) => {
+export const Services: React.FC<ServicesProps> = ({ contactEmail, zaaskUrl, phone, phoneDisplay }) => {
   return (
     <section id="servicos" className="py-20 md:py-32 scroll-mt-16">
       <h2 className="text-3xl font-mono font-bold text-white mb-4 flex items-center w-full">
@@ -107,10 +109,26 @@ export const Services: React.FC<ServicesProps> = ({ contactEmail, zaaskUrl }) =>
         ))}
       </div>
 
-      <div className="mt-10 flex flex-col sm:flex-row gap-4">
+      <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4">
+        <a
+          href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá João, gostava de pedir um orçamento.')}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex justify-center items-center px-8 py-4 border border-cyber-neon text-cyber-bg bg-cyber-neon font-mono font-bold rounded transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(102,252,241,0.6)]"
+        >
+          <MessageCircle className="mr-2 w-5 h-5" />
+          WhatsApp
+        </a>
+        <a
+          href={`tel:+${phone}`}
+          className="inline-flex justify-center items-center px-8 py-4 border border-cyber-neon text-cyber-neon font-mono font-bold rounded transition-all duration-300 hover:bg-cyber-neon/10 hover:-translate-y-1"
+        >
+          <Phone className="mr-2 w-5 h-5" />
+          {phoneDisplay}
+        </a>
         <a
           href={`mailto:${contactEmail}?subject=Pedido de orçamento`}
-          className="inline-flex justify-center items-center px-8 py-4 border border-cyber-neon text-cyber-bg bg-cyber-neon font-mono font-bold rounded transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(102,252,241,0.6)]"
+          className="inline-flex justify-center items-center px-8 py-4 border border-cyber-dim text-cyber-neon font-mono rounded transition-all duration-300 hover:bg-cyber-neon/10 hover:-translate-y-1"
         >
           <Mail className="mr-2 w-5 h-5" />
           Pedir orçamento
