@@ -347,6 +347,10 @@ const App: React.FC = () => {
               <Linkedin className="w-6 h-6" />
             </a>
           </div>
+          {/* Selo de validação Zaask */}
+          <div className="flex justify-center mb-6">
+            <a target="_blank" href="https://www.zaask.pt/user/joaomachadoinformaticasantotirso"><img src="https://www.zaask.pt/widget?user=1097737&widget=pro-findme" alt="" /></a>
+          </div>
           <p className="font-mono text-sm text-cyber-dim">
             System secured. &copy; 2026 João Machado
           </p>
